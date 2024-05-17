@@ -9,9 +9,20 @@ public class ScoreBoardManager : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private Text bestScoreText;
 
-    private float time = 0.0f;
-    private float totalScore = 0.0f;
-    private float bestScore = 0.0f;
+    private float time;
+    private float totalScore;
+    private float bestScore;
+
+    private Data data;
+
+    private void Start()
+    {
+        data = DataManager.Instance.Load();
+
+        time = 0.0f;
+        totalScore = 0.0f;
+        bestScore = data.bestScore;
+    }
 
     private void Update()
     {
@@ -29,6 +40,8 @@ public class ScoreBoardManager : MonoBehaviour
         {
             bestScore = totalScore;
             bestScoreText.text = bestScore.ToString();
+
+            DataManager.Instance.Save(new Data(bestScore));
         }
     }
 }
