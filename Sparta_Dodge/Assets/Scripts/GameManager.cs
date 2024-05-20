@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         if(curSpawnDelay > maxSpawnDelay)
         {
             SpawnEnemy();
-            maxSpawnDelay = Random.Range(0.5f, 2f);
+            maxSpawnDelay = Random.Range(0.5f, 1.5f);
             curSpawnDelay = 0;
         }
     }
@@ -27,10 +27,29 @@ public class GameManager : MonoBehaviour
     void SpawnEnemy()
     {
         int ranEnemy = Random.Range(0, 3);
-        int ranPoint = Random.Range(0, 5);
+        int ranPoint = Random.Range(0, 9);
 
-        Instantiate(enemyObjs[ranEnemy],
-                    spawnPoints[ranPoint].position,
-                    Quaternion.Euler(0, 0, -90));
+        GameObject enemy= Instantiate(enemyObjs[ranEnemy],
+                          spawnPoints[ranPoint].position,
+                          Quaternion.Euler(0, 0, -90));
+
+        Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
+        Enemy enemyLogic = enemy.GetComponent<Enemy>();
+
+        if (ranPoint == 5 || ranPoint == 6)
+        {
+            rigid.velocity = new Vector2(enemyLogic.speed * -1, 1);
+        }
+        else if (ranPoint == 7 || ranPoint == 8)
+        {
+            rigid.velocity = new Vector2(enemyLogic.speed * -1, -1);
+        }
+        else
+        {
+            rigid.velocity = new Vector2(enemyLogic.speed * (-1), 0);
+        }
+        
+              
+        
     }
 }

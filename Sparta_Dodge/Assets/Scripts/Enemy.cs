@@ -10,13 +10,12 @@ public class Enemy : MonoBehaviour
     private Vector2 limit = new Vector2(-12, 0);
 
     SpriteRenderer spriteRenderer;
-    Rigidbody2D rb2D;
+   
 
     void Awake()
     {
         Sprite sprite = GetComponent<Sprite>();
-        rb2D = GetComponent<Rigidbody2D>();
-        rb2D.velocity = Vector2.left * speed;
+        
     }
 
     private void Update()
