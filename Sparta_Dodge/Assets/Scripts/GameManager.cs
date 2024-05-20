@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
                           Quaternion.Euler(0, 0, -90));
 
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
-        Enemy enemyLogic = enemy.GetComponent<Enemy>();
+        EnemySpawn enemyLogic = enemy.GetComponent<EnemySpawn>();
 
         if (ranPoint == 5 || ranPoint == 6)
         {
