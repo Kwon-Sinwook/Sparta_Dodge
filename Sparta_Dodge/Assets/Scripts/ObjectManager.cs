@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject enemy0Prefab;
+    public GameObject enemy1Prefab;
+    public GameObject enemy2Prefab;
+
     public GameObject bulletPlayerPrefab;
     public GameObject bulletEnemyPrefab;
 
-    GameObject[] enemy;
+    GameObject[] enemy0;
+    GameObject[] enemy1;
+    GameObject[] enemy2;
+
     GameObject[] bulletPlayer;
     GameObject[] bulletEnemy;
 
@@ -16,7 +22,10 @@ public class ObjectManager : MonoBehaviour
 
     private void Awake()
     {
-        enemy = new GameObject[30];
+        enemy0 = new GameObject[20];
+        enemy1 = new GameObject[10];
+        enemy2 = new GameObject[10];
+
         bulletPlayer = new GameObject[200];
         bulletEnemy = new GameObject[200];
 
@@ -25,10 +34,22 @@ public class ObjectManager : MonoBehaviour
 
     void Generate()
     {
-        for (int idx = 0; idx < enemy.Length; idx++)
+        for (int idx = 0; idx < enemy0.Length; idx++)
         {
-            enemy[idx] = Instantiate(enemyPrefab);
-            enemy[idx].SetActive(false);
+            enemy0[idx] = Instantiate(enemy0Prefab);
+            enemy0[idx].SetActive(false);
+        }
+
+        for (int idx = 0; idx < enemy1.Length; idx++)
+        {
+            enemy1[idx] = Instantiate(enemy1Prefab);
+            enemy1[idx].SetActive(false);
+        }
+
+        for (int idx = 0; idx < enemy2.Length; idx++)
+        {
+            enemy2[idx] = Instantiate(enemy2Prefab);
+            enemy2[idx].SetActive(false);
         }
 
         for (int idx = 0; idx < bulletPlayer.Length; idx++)
@@ -49,8 +70,14 @@ public class ObjectManager : MonoBehaviour
     {
         switch(type)
         {
-            case "Enemy":
-                targetPool = enemy;
+            case "Enemy0":
+                targetPool = enemy0;
+                break;
+            case "Enemy1":
+                targetPool = enemy1;
+                break;
+            case "Enemy2":
+                targetPool = enemy2;
                 break;
             case "BulletPlayer":
                 targetPool = bulletPlayer;

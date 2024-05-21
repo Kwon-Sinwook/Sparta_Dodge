@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2ea0b6e14bff74cbe197a757bff839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5937767611585300625, guid: a111b3071162a054aa216b268ebeff84, type: 3}
+  enemy0Prefab: {fileID: 5937767611585300625, guid: a111b3071162a054aa216b268ebeff84, type: 3}
+  enemy1Prefab: {fileID: 2558892639752581737, guid: dd21e6bb6e643d84aacb48e11d8ff048, type: 3}
+  enemy2Prefab: {fileID: 238951454803304782, guid: 92a02da8280a39e4088352fb1e696d57, type: 3}
   bulletPlayerPrefab: {fileID: 1555535671859090319, guid: 0f1247fa265610149b9f8916f52615c6, type: 3}
   bulletEnemyPrefab: {fileID: 1555535671859090319, guid: f2954758ff84b0644abb0c600817b997, type: 3}
