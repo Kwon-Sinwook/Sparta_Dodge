@@ -10,11 +10,11 @@ public class FireSystem : MonoBehaviour
     private float currentShotDelay;
 
 
-    //private void Update()
-    //{
-    //    Fire(this.transform);
-    //    Reload();
-    //}
+    private void Update()
+    {
+        Fire(this.transform);
+        Reload();
+    }
     public void Fire(Transform transform)
     {
         if (currentShotDelay < maxShotDelay)
@@ -22,7 +22,7 @@ public class FireSystem : MonoBehaviour
 
         GameObject bullet = Instantiate(bulleltObj, transform.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.right * 10, ForceMode2D.Impulse);
 
         currentShotDelay = 0;
     }
