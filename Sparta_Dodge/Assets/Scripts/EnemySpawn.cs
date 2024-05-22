@@ -56,7 +56,7 @@ public class EnemySpawn : MonoBehaviour
         health -= dmg;
         spriteRenderer.sprite = sprites[1];
         Invoke("OnHitEffect", 0.1f);
-        Invoke("CheckDestroy", 0.05f);
+        Invoke("CheckDestroy", 0.1f);
     }
 
     void OnHitEffect()
@@ -70,7 +70,7 @@ public class EnemySpawn : MonoBehaviour
         {
             animator.SetTrigger("Die");
             GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardManager>().UpdateScore(10f);
-            Destroy(gameObject, 0.35f);
+            Destroy(gameObject, 0.3f);
         }
     }
 
