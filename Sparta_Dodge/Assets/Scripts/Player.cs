@@ -57,6 +57,9 @@ public class Player : MonoBehaviour
 
     public void Fire(Transform transform)
     {
+        if (!Input.GetButton("Jump"))
+            return;
+
         if (currentShotDelay < maxShotDelay)
             return;
 
