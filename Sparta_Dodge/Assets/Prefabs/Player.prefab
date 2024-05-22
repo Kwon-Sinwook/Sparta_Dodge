@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10abb32f66be7b4479176744824e5d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6.5
+  speed: 6
   life: 0
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 2591459386868518279, guid: 097edfb012c98a64482d8494d6e5a8e9, type: 3}
+  objectManager: {fileID: 8445625238627950195, guid: 164e0a90e621e804baa45f05e25a2e4b, type: 3}
   bulleltObj: {fileID: 1555535671859090319, guid: 0f1247fa265610149b9f8916f52615c6, type: 3}
   maxShotDelay: 0.2
   isDead: 0

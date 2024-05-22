@@ -167,7 +167,8 @@ MonoBehaviour:
   - {fileID: 8414478535512612329, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   - {fileID: 4326287474489854147, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   bulleltObj: {fileID: 1555535671859090319, guid: f2954758ff84b0644abb0c600817b997, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 6970197442235940417, guid: cd7558a938ab5c840b636f6a455cfd9a, type: 3}
+  objectManager: {fileID: 8445625238627950195, guid: 164e0a90e621e804baa45f05e25a2e4b, type: 3}
   maxShotDelay: 1
 --- !u!95 &5118487294158159200
 Animator:

@@ -60,3 +60,7 @@ MonoBehaviour:
   - {fileID: 0}
   maxSpawnDelay: 1.5
   curSpawnDelay: 0
+  player: {fileID: 0}
+  scoreBoard: {fileID: 0}
+  hpText: {fileID: 0}
+  objectManager: {fileID: 8445625238627950195, guid: 164e0a90e621e804baa45f05e25a2e4b, type: 3}
