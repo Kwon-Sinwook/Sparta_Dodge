@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public float maxSpawnDelay;
     public float curSpawnDelay;
 
+    [SerializeField] private GameObject scoreBoard;
+
     void Update()
     {
         curSpawnDelay += Time.deltaTime;
@@ -51,5 +53,10 @@ public class GameManager : MonoBehaviour
         
               
         
+    }
+
+    public void GameOver()
+    {
+        scoreBoard.SetActive(true);
     }
 }

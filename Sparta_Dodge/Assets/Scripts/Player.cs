@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public int life;
+
+    [SerializeField] private GameManager gameManager;
 
     public GameObject bulleltObj;
 
@@ -19,6 +22,9 @@ public class Player : MonoBehaviour
     private bool isTouchLeft;
     private bool isTouchTop;
     private bool isTouchBottom;
+
+    private bool isHit;
+    public bool isDead = false;
 
     private void Awake()
     {
@@ -63,5 +69,29 @@ public class Player : MonoBehaviour
     public void Reload()
     {
         currentShotDelay += Time.deltaTime;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
+        {
+            if (isHit)
+                return;
+
+            isHit = true;
+
+            life--;
+
+            if(life == 0)
+            {
+                isDead = true;
+                gameObject.SetActive(false);
+                gameManager.GameOver();
+            }
+
+            Destroy(collision.gameObject);
+
+            isHit = false;
+        }
     }
 }

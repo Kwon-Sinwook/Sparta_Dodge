@@ -9,6 +9,8 @@ public class ScoreBoardManager : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private Text bestScoreText;
 
+    [SerializeField] private Player player;
+
     private float time;
     private float totalScore;
     private float bestScore;
@@ -27,8 +29,11 @@ public class ScoreBoardManager : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
-        timeText.text = time.ToString("N2");
+        if (!player.isDead)
+        {
+            time += Time.deltaTime;
+            timeText.text = time.ToString("N2");
+        }
     }
 
     // 적 캐릭터 제거하고 점수를 증가시킬 때 사용
@@ -37,7 +42,7 @@ public class ScoreBoardManager : MonoBehaviour
         totalScore += score;
         scoreText.text = totalScore.ToString();
 
-        if(totalScore > bestScore)
+        if (totalScore > bestScore)
         {
             bestScore = totalScore;
             bestScoreText.text = bestScore.ToString();
