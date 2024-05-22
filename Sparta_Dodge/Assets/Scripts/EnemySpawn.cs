@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     public float speed = 3f;
-    private int health = 1;
+    private int health;
     public Sprite[] sprites;
 
     SpriteRenderer spriteRenderer;
@@ -13,6 +13,7 @@ public class EnemySpawn : MonoBehaviour
 
     public GameObject bulleltObj;
     public GameObject player;
+    public ObjectManager objectManager;
 
     [SerializeField] private float maxShotDelay = 1f;
     private float currentShotDelay;
@@ -34,15 +35,20 @@ public class EnemySpawn : MonoBehaviour
         if (currentShotDelay < maxShotDelay)
             return;
 
-        GameObject bullet = Instantiate(bulleltObj, transform.position, transform.rotation);
+        GameObject bullet = objectManager.MakeObj("BulletEnemy");
+        bullet.transform.position = transform.position;
+
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
-        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0, 0, rotZ-90f);
 
         rb.AddForce(direction * 5, ForceMode2D.Impulse);
 
         currentShotDelay = 0;
     }
+
 
     public void Reload()
     {
@@ -55,6 +61,8 @@ public class EnemySpawn : MonoBehaviour
         spriteRenderer.sprite = sprites[1];
         Invoke("OnHitEffect", 0.1f);
         Invoke("CheckDestroy", 0.4f);
+
+        CheckDestroy();
     }
 
     void OnHitEffect()
@@ -67,7 +75,8 @@ public class EnemySpawn : MonoBehaviour
         if (health <= 0)
         {
             GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardManager>().UpdateScore(10f);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+           
         }
     }
 
@@ -75,7 +84,8 @@ public class EnemySpawn : MonoBehaviour
     {
         if (collision.gameObject.tag == "Border")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+          
         }
         else if (collision.gameObject.tag == "PlayerBullet")
         {

@@ -9,9 +9,8 @@ public class Player : MonoBehaviour
     public float speed;
     public int life;
 
-    [SerializeField] private GameManager gameManager;
-
-    public GameObject bulleltObj;
+    public GameManager gameManager;
+    public ObjectManager objectManager;
 
     [SerializeField] private float maxShotDelay = 0.2f;
     private float currentShotDelay;
@@ -63,7 +62,9 @@ public class Player : MonoBehaviour
         if (currentShotDelay < maxShotDelay)
             return;
 
-        GameObject bullet = Instantiate(bulleltObj, transform.position, transform.rotation);
+        GameObject bullet = objectManager.MakeObj("BulletPlayer");
+        bullet.transform.position = transform.position;
+
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(Vector2.right * 10, ForceMode2D.Impulse);
 
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour
                 gameManager.GameOver();
             }
 
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
             isHit = false;
         }
