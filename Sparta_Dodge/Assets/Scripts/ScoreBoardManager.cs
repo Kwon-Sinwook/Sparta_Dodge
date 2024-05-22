@@ -19,11 +19,11 @@ public class ScoreBoardManager : MonoBehaviour
 
     private void Start()
     {
-        data = DataManager.Instance.Load();
-        Debug.Log(data.bestScore);
-
         time = 0.0f;
         totalScore = 0.0f;
+
+        data = DataManager.Instance.Load();
+        Debug.Log(data.bestScore);
         bestScore = data.bestScore;
         bestScoreText.text = bestScore.ToString();
     }

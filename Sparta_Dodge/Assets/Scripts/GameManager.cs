@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject scoreBoard;
 
+    [SerializeField] private Text hpText;
+
     void Update()
     {
         curSpawnDelay += Time.deltaTime;
@@ -25,6 +28,8 @@ public class GameManager : MonoBehaviour
             maxSpawnDelay = Random.Range(0.5f, 1.5f);
             curSpawnDelay = 0;
         }
+
+        hpText.text = "Hp " + player.GetComponent<Player>().life.ToString();
     }
 
     void SpawnEnemy()
