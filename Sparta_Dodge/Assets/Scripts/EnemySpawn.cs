@@ -10,12 +10,43 @@ public class EnemySpawn : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
-    
+
+    public GameObject bulleltObj;
+    public GameObject player;
+
+    [SerializeField] private float maxShotDelay = 1f;
+    private float currentShotDelay;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.down * speed;
+    }
+
+    private void Update()
+    {
+        Fire(this.transform);
+        Reload();
+    }
+    public void Fire(Transform transform)
+    {
+        if (currentShotDelay < maxShotDelay)
+            return;
+
+        GameObject bullet = Instantiate(bulleltObj, transform.position, transform.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+
+        rb.AddForce(direction * 5, ForceMode2D.Impulse);
+
+        currentShotDelay = 0;
+    }
+
+    public void Reload()
+    {
+        currentShotDelay += Time.deltaTime;
     }
 
     void OnHit(int dmg = 1)

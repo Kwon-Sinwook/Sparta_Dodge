@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public float maxSpawnDelay;
     public float curSpawnDelay;
 
+    public GameObject player;
     public GameObject scoreBoard;
 
     void Update()
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
 
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         EnemySpawn enemyLogic = enemy.GetComponent<EnemySpawn>();
+        enemyLogic.player = player;
 
         if (ranPoint == 5 || ranPoint == 6)
         {

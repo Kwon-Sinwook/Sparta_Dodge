@@ -181,3 +181,6 @@ MonoBehaviour:
   sprites:
   - {fileID: -1147401495359466748, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   - {fileID: -7844560889915226194, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  bulleltObj: {fileID: 1555535671859090319, guid: f2954758ff84b0644abb0c600817b997, type: 3}
+  player: {fileID: 0}
+  maxShotDelay: 1
