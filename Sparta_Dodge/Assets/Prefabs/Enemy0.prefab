@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6698036866145475286}
   - component: {fileID: 6551675333360035026}
   - component: {fileID: 1249140480057819503}
+  - component: {fileID: 5118487294158159200}
   m_Layer: 0
   m_Name: Enemy0
   m_TagString: Enemy
@@ -161,10 +162,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c466c563c9fad84faca2ef2d83d709a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4
   sprites:
   - {fileID: 8414478535512612329, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   - {fileID: 4326287474489854147, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   bulleltObj: {fileID: 1555535671859090319, guid: f2954758ff84b0644abb0c600817b997, type: 3}
   player: {fileID: 0}
   maxShotDelay: 1
+--- !u!95 &5118487294158159200
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937767611585300625}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78976a7b650eb994e83097e164d33b21, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

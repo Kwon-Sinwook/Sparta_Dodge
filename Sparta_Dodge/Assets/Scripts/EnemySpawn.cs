@@ -16,9 +16,11 @@ public class EnemySpawn : MonoBehaviour
 
     [SerializeField] private float maxShotDelay = 1f;
     private float currentShotDelay;
+    Animator animator;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.down * speed;
@@ -54,7 +56,7 @@ public class EnemySpawn : MonoBehaviour
         health -= dmg;
         spriteRenderer.sprite = sprites[1];
         Invoke("OnHitEffect", 0.1f);
-        Invoke("CheckDestroy", 0.4f);
+        Invoke("CheckDestroy", 0.05f);
     }
 
     void OnHitEffect()
@@ -66,8 +68,9 @@ public class EnemySpawn : MonoBehaviour
     {
         if (health <= 0)
         {
+            animator.SetTrigger("Die");
             GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardManager>().UpdateScore(10f);
-            Destroy(gameObject);
+            Destroy(gameObject, 0.35f);
         }
     }
 
