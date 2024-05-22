@@ -22,6 +22,7 @@ public class ScoreBoardManager : MonoBehaviour
         time = 0.0f;
         totalScore = 0.0f;
         bestScore = data.bestScore;
+        bestScoreText.text = bestScore.ToString();
     }
 
     private void Update()

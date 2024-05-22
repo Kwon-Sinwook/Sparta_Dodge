@@ -35,6 +35,7 @@ public class EnemySpawn : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardManager>().UpdateScore(10f);
             Destroy(gameObject);
         }
     }
