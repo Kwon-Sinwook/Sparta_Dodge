@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public float maxSpawnDelay;
     public float curSpawnDelay;
 
-    [SerializeField] private GameObject scoreBoard;
+    public GameObject scoreBoard;
 
     void Update()
     {
